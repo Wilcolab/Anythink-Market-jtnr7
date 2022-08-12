@@ -6,7 +6,7 @@ const superagent = superagentPromise(_superagent, global.Promise);
 const API_ROOT =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:3000/api"
-    : process.env.BACKEND_URL;
+    : "https://anythink-market-jtnr7-api.herokuapp.com/api/ping";
 
 const encode = encodeURIComponent;
 const responseBody = (res) => res.body;
