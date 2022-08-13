@@ -9,11 +9,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Wilco App'],
+  app_name: ['Wilco APP'],
   /**
    * Your New Relic license key.
    */
-  license_key: process.env.RELIC_LIC,
+  license_key: 'license key here',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
