@@ -38,7 +38,7 @@ router.param("comment", function(req, res, next, id) {
 
 router.get("/", auth.optional, function(req, res, next) {
   var query = {};
-  var limit = 100;
+  var limit = 10;
   var offset = 0;
 
   if (typeof req.query.limit !== "undefined") {
@@ -52,15 +52,15 @@ router.get("/", auth.optional, function(req, res, next) {
   if (typeof req.query.tag !== "undefined") {
     query.tagList = { $in: [req.query.tag] };
   }
-
   Promise.all([
     req.query.seller ? User.findOne({ username: req.query.seller }) : null,
     req.query.favorited ? User.findOne({ username: req.query.favorited }) : null
   ])
     .then(function(results) {
+      
       var seller = results[0];
       var favoriter = results[1];
-
+    
       if (seller) {
         query.seller = seller._id;
       }
@@ -72,7 +72,7 @@ router.get("/", auth.optional, function(req, res, next) {
       }
 
       return Promise.all([
-        Item.find(query)
+        Item.find(query).populate("seller")
           .limit(Number(limit))
           .skip(Number(offset))
           .sort({ createdAt: "desc" })
@@ -80,18 +80,22 @@ router.get("/", auth.optional, function(req, res, next) {
         Item.count(query).exec(),
         req.payload ? User.findById(req.payload.id) : null
       ]).then(async function(results) {
+  
         var items = results[0];
         var itemsCount = results[1];
         var user = results[2];
-        return res.json({
+        const finalResponse = {
           items: await Promise.all(
             items.map(async function(item) {
-              item.seller = await User.findById(item.seller);
               return item.toJSONFor(user);
             })
           ),
           itemsCount: itemsCount
-        });
+        }
+        console.log(finalResponse)
+        return res.json(finalResponse);
+        
+       
       });
     })
     .catch(next);

@@ -10,9 +10,11 @@
     "dev": "nodemon ./app.js",
     "seeds": "node ./scripts/seeds.js",
     "test": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json",
-    "stop": "lsof -ti :3000 | xargs kill"
+    "stop": "lsof -ti :3000 | xargs kill",
+    "autocannon": "node ./scripts/autocannon.js"
   },
   "dependencies": {
+    "autocannon": "^7.9.0",
     "axios": "^0.25.0",
     "body-parser": "1.15.0",
     "cors": "2.7.1",
