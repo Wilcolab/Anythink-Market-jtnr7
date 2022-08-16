@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Banner = (props) => {
   const handleChange = (e) => {
-
     const value = e.target.value;
     props.onChange(value);
 
@@ -46,7 +45,7 @@ const Banner = (props) => {
       );
     }
   };
-  
+
   return (
     <div className="banner text-white">
       <div className="container p-4 text-center">
