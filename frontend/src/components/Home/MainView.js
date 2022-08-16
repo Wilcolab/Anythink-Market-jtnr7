@@ -87,7 +87,8 @@ const MainView = (props) => {
         </ul>
       </div>
 
-      {props.itemsCount !== 0 ? (
+      {
+      props.itemsCount !== 0 ? (
         <ItemList
           pager={props.pager}
           items={props.items}

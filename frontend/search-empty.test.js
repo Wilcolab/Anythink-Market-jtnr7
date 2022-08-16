@@ -23,7 +23,7 @@ it("Shows the empty placeholder only after unsuccessful search", async () => {
     try {
       await page.waitForSelector("#empty", {
         visible: true,
-        timeout: 1500,
+        timeout: 9500,
       });
       return true;
     } catch (e) {
@@ -31,7 +31,11 @@ it("Shows the empty placeholder only after unsuccessful search", async () => {
     }
   };
 
+
   const emptyVisibleBefore = await isEmptyViewVisible(page);
+
+  console.log('what is this', emptyVisibleBefore)
+
 
   await expect(emptyVisibleBefore).toBe(false);
 
@@ -39,6 +43,10 @@ it("Shows the empty placeholder only after unsuccessful search", async () => {
   await page.keyboard.type("zzz"); // some non-existing item
 
   const emptyVisibleAfter = await isEmptyViewVisible(page);
+
+
+    console.log(emptyVisibleAfter)
+
 
   await expect(emptyVisibleAfter).toBe(true);
 }, 60000);
