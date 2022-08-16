@@ -3,7 +3,7 @@ import agent from "../../agent";
 import { connect } from "react-redux";
 import {
   UPDATE_SEARCH_FIELD,
-  APPLY_TITLE_FILTER,
+  SUBMIT_TITLE_FILTER,
   HOME_PAGE_LOADED,
 } from "../../constants/actionTypes";
 import logo from "../../imgs/logo.png";
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onChange: (payload) => dispatch({ type: UPDATE_SEARCH_FIELD, payload }),
   onSearchSubmit: (title, pager, payload) =>
-    dispatch({ type: APPLY_TITLE_FILTER, title, pager, payload }),
+    dispatch({ type: SUBMIT_TITLE_FILTER, title, pager, payload }),
   onLoad: (tab, pager, payload) =>
     dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
 });

@@ -62,7 +62,8 @@ const mapStateToProps = (state) => ({
   ...state.itemList,
   tags: state.home.tags,
   token: state.common.token,
-  title: state.search.title,
+  search: state.search.title,
+  submitted: state.search.submitted,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -71,6 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const MainView = (props) => {
+  console.log("props in mainview", props);
   return (
     <div>
       <div className="feed-toggle">
@@ -87,8 +89,7 @@ const MainView = (props) => {
         </ul>
       </div>
 
-      {
-      props.itemsCount !== 0 ? (
+      {!props.search || !props.submitted ? (
         <ItemList
           pager={props.pager}
           items={props.items}
@@ -98,7 +99,7 @@ const MainView = (props) => {
         />
       ) : (
         <h4 style={{ textAlign: "center", marginTop: 15 }} id="empty">
-          No items found found for "<b>{props.title}"</b>
+          No items found found for "<b>{props.search}"</b>
         </h4>
       )}
     </div>
