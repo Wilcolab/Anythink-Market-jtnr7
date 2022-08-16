@@ -66,7 +66,7 @@ const Banner = (props) => {
           }}
         >
           <span>
-            A place to <span onClick={handleClick}>get</span>{" "}
+            A place to <span id="get-part" onClick={handleClick}>get</span>{" "}
           </span>
           {props.search.clicked && (
             <input
