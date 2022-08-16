@@ -71,7 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const MainView = (props) => {
-  console.log("mainview props");
+
   return (
     <div>
       <div className="feed-toggle">
