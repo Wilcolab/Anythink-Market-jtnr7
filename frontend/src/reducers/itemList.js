@@ -47,7 +47,7 @@ const reducer = (state = {}, action) => {
         tag: action.tag,
         currentPage: 0,
       };
-      case APPLY_TITLE_FILTER:
+    case APPLY_TITLE_FILTER:
       return {
         ...state,
         pager: action.pager,

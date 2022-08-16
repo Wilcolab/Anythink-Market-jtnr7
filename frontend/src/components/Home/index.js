@@ -2,14 +2,13 @@ import Banner from "./Banner";
 import MainView from "./MainView";
 import React from "react";
 import Tags from "./Tags";
-import Search from "./Search";
 import agent from "../../agent";
 import { connect } from "react-redux";
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER,
- /*  APPLY_TITLE_FILTER, */
+  /*  APPLY_TITLE_FILTER, */
 } from "../../constants/actionTypes";
 
 const Promise = global.Promise;
@@ -48,7 +47,6 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <Banner />
-        <Search onChangeSearch={this.props.onChangeSearch} />
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
           <MainView />
