@@ -62,6 +62,7 @@ const mapStateToProps = (state) => ({
   ...state.itemList,
   tags: state.home.tags,
   token: state.common.token,
+  title: state.search.title,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -70,7 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const MainView = (props) => {
-  console.log("mainview props", props);
+  console.log("mainview props");
   return (
     <div>
       <div className="feed-toggle">
@@ -87,13 +88,19 @@ const MainView = (props) => {
         </ul>
       </div>
 
-      <ItemList
-        pager={props.pager}
-        items={props.items}
-        loading={props.loading}
-        itemsCount={props.itemsCount}
-        currentPage={props.currentPage}
-      />
+      {props.itemsCount !== 0 ? (
+        <ItemList
+          pager={props.pager}
+          items={props.items}
+          loading={props.loading}
+          itemsCount={props.itemsCount}
+          currentPage={props.currentPage}
+        />
+      ) : (
+        <h4 style={{ textAlign: "center", marginTop: 15 }} id="empty">
+          No items found found for "<b>{props.title}"</b>
+        </h4>
+      )}
     </div>
   );
 };

@@ -9,7 +9,7 @@ import {
 import logo from "../../imgs/logo.png";
 
 const mapStateToProps = (state) => ({
-  ...state.search,
+  ...state,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Banner = (props) => {
   const handleChange = (e) => {
+    console.log("checkit!", props);
     const value = e.target.value;
     props.onChange(value);
 
@@ -45,7 +46,6 @@ const Banner = (props) => {
       );
     }
   };
-
   return (
     <div className="banner text-white">
       <div className="container p-4 text-center">
@@ -62,7 +62,7 @@ const Banner = (props) => {
           <input
             id="search-box"
             type="text"
-            value={props.title}
+            value={props.search.title}
             onChange={handleChange}
           />
           <span>the cool stuff</span>
