@@ -33,16 +33,12 @@ it("Shows the empty placeholder only after unsuccessful search", async () => {
 
   const emptyVisibleBefore = await isEmptyViewVisible(page);
 
-
-
   await expect(emptyVisibleBefore).toBe(false);
 
   await page.focus("#search-box");
   await page.keyboard.type("zzz"); // some non-existing item
 
   const emptyVisibleAfter = await isEmptyViewVisible(page);
-
-
 
   await expect(emptyVisibleAfter).toBe(true);
 }, 60000);

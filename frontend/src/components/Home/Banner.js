@@ -61,12 +61,14 @@ const Banner = (props) => {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: 20,
             flexWrap: "wrap",
           }}
         >
           <span>
-            A place to <span id="get-part" onClick={handleClick}>get</span>{" "}
+            A place to{" "}
+            <span id="get-part" onClick={handleClick}>
+              get&nbsp;
+            </span>
           </span>
           {props.search.clicked && (
             <input
@@ -74,6 +76,7 @@ const Banner = (props) => {
               type="text"
               value={props.search.title}
               onChange={handleChange}
+              style={{ marginRight: 5 }}
             />
           )}
           <span>the cool stuff</span>
