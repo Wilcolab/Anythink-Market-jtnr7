@@ -2,6 +2,7 @@ import {
   SUBMIT_TITLE_FILTER,
   ASYNC_START,
   UPDATE_SEARCH_FIELD,
+  SEARCH_GET_CLICK,
 } from "../constants/actionTypes";
 
 const reducer = (state = {}, action) => {
@@ -24,6 +25,8 @@ const reducer = (state = {}, action) => {
       } else {
         return { ...state, title: action.payload, submitted: false };
       }
+    case SEARCH_GET_CLICK: 
+      return {...state, clicked: true }
     default:
       return state;
   }
