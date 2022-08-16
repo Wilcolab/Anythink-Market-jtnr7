@@ -20,8 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: SUBMIT_TITLE_FILTER, title, pager, payload }),
   onLoad: (tab, pager, payload) =>
     dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
-  onClick: () =>
-    dispatch({ type: SEARCH_GET_CLICK }),
+  onClick: () => dispatch({ type: SEARCH_GET_CLICK }),
 });
 
 const Banner = (props) => {
@@ -52,7 +51,7 @@ const Banner = (props) => {
 
   const handleClick = () => {
     props.onClick();
-  }
+  };
 
   return (
     <div className="banner text-white">
@@ -66,13 +65,17 @@ const Banner = (props) => {
             flexWrap: "wrap",
           }}
         >
-          <span>A place to <span onClick={handleClick}>get</span> </span>
-          {props.search.clicked && <input
-            id="search-box"
-            type="text"
-            value={props.search.title}
-            onChange={handleChange}
-          />}
+          <span>
+            A place to <span onClick={handleClick}>get</span>{" "}
+          </span>
+          {props.search.clicked && (
+            <input
+              id="search-box"
+              type="text"
+              value={props.search.title}
+              onChange={handleChange}
+            />
+          )}
           <span>the cool stuff</span>
         </div>
       </div>
