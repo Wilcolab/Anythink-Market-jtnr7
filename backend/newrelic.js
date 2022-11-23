@@ -12,7 +12,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Anythink-Market'],
+  app_name: ['Anythink Market'],
   /**
    * Your New Relic license key.
    */
