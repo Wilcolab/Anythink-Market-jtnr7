@@ -65,9 +65,7 @@ const App = (props) => {
           <Route
           path="/settings"
           element={
-            <PrivateRoute user={props.currentUser}>
-              <Settings />
-            </PrivateRoute>
+            <PrivateRoute currentUser={props.currentUser} component={<Settings />}/>
           }
           />
           <Route path="/:username/favorites" element={<ProfileFavorites/>} />
